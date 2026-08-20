@@ -1,34 +1,38 @@
-'use client'
-import { motion } from 'framer-motion'
+const herName = "دودو"
 
 const memories = [
-  { title: "البداية", text: "اليوم اللي قابلتك فيه الدنيا اتغيرت", img: "https://picsum.photos/800/1200?1" },
-  { title: "ضحكتك", text: "هي السبب اللي بيخليني أكمل", img: "https://picsum.photos/800/1200?2" },
-  { title: "معاك", text: "كل مكان بقى بيت", img: "https://picsum.photos/800/1200?3" },
-  { title: "بحبك", text: "النهاردة وبكرة وكل يوم", img: "https://picsum.photos/800/1200?4" },
+  { title: "البداية", text: `اليوم اللي قابلتك فيه يا ${herName} الدنيا اتغيرت`, img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb" },
+  { title: "ضحكتك", text: `ضحكتك يا ${herName} هي السبب اللي بيخليني اكمل`, img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330" },
+  { title: "معاكي", text: `معاكي يا ${herName} كل مكان بقى بيت`, img: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2" },
+  { title: "بحبك", text: `بحبك يا ${herName} النهاردة وبكرة وكل يوم`, img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7" }
 ]
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <main style={{background: 'black', color: 'white', fontFamily: 'Arial'}}>
+      <div style={{textAlign: 'center', padding: '30px', background: '#111'}}>
+        <h1 style={{fontSize: '40px'}}>موقع مخصوص لـ {herName} ❤️</h1>
+      </div>
+      
       {memories.map((item, i) => (
-        <motion.section
+        <section
           key={i}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="h-screen w-full flex items-center justify-center bg-cover bg-center sticky top-0"
-          style={{ backgroundImage: `url(${item.img})` }}
+          style={{
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundImage: `url(${item.img})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            textAlign: 'center'
+          }}
         >
-          <motion.div 
-            initial={{ y: 50 }}
-            whileInView={{ y: 0 }}
-            className="bg-white/20 backdrop-blur-lg rounded-3xl p-10 text-center text-white max-w-md mx-4"
-          >
-            <h1 className="text-6xl font-bold mb-4">{item.title}</h1>
-            <p className="text-2xl">{item.text}</p>
-          </motion.div>
-        </motion.section>
+          <div style={{background: 'rgba(0,0,0,0.6)', padding: '40px', borderRadius: '20px', maxWidth: '80%'}}>
+            <h1 style={{fontSize: '48px', fontWeight: 'bold', marginBottom: '20px'}}>{item.title}</h1>
+            <p style={{fontSize: '24px'}}>{item.text}</p>
+          </div>
+        </section>
       ))}
     </main>
   )
